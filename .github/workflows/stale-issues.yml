@@ -1,0 +1,21 @@
+name: Label raised issue as stale after 1 day and close the issue after 2 days
+
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+    - uses: actions/stale@v5.1.1
+      with:
+        stale-issue-message: 'This issue has been open for 1 day, so it has become stale.'
+        stale-issue-label: 'stale'
+        days-before-stale: 1
+        close-issue-message: 'This issue has been open for 2 days.'
+        days-before-close: 2
