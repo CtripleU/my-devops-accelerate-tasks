@@ -1,0 +1,21 @@
+name: Print the OS name, list files in the repository, and get the uuid
+
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  Show_OS_Name:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print OS name
+        run: |
+          grep '^NAME' /etc/os-release
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Display UUID details
+        run: |
+          blkid
